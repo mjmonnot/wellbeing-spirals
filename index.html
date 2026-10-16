@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Losses spiral faster than gains &mdash; employee well-being under AI-related change</title>
+<meta name="description" content="Eighteen years of Dutch employees: who stays distressed, who recovers, and what the feeling of being replaceable by AI does to well-being five years on. Interactive companion to a longitudinal study of personality profiles and psychological resources under technological change.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+
+<nav class="site-nav" aria-label="Site">
+  <ul>
+    <li><a href="./" aria-current="page">Overview &amp; spiral explorer</a></li>
+    <li><a href="evidence.html">The evidence</a></li>
+    <li><a href="playbook.html">What to watch</a></li>
+    <li><a href="references.html">Key references</a></li>
+  </ul>
+</nav>
+
+<header class="masthead">
+  <p class="kicker">Employee well-being &middot; Research companion</p>
+  <h1>Losses spiral faster than gains. The feeling of being replaceable is what does the damage.</h1>
+  <p class="dek">Eighteen annual waves of Dutch employees (2008&ndash;2025; 72,433 person-waves,
+  16,862 people). Four personality configurations found in U.S. midlife adults reappeared on a
+  different instrument. Employees who in 2020 felt replaceable by AI, or exhausted by
+  technology-paced work, reported lower job and life satisfaction five years later &mdash; and
+  it was their <em>appraisal</em> of replaceability, not their occupation&rsquo;s exposure score,
+  that carried the cost. Among distressed employees, optimism, self-esteem, and work meaning
+  separated recovery from disengagement. Within persons, a rise in distress depleted self-esteem
+  more than an equal gain in self-esteem relieved distress.</p>
+</header>
+
+<section aria-labelledby="s0">
+  <p class="section-label" id="s0">At a glance</p>
+  <div class="strip">
+    <div class="stat">
+      <span class="stat-value red">&minus;.31</span>
+      <span class="stat-label">Exhaustion &rarr; life satisfaction</span>
+      <span class="stat-sub">Standardized lagged association, 2020 stressor to 2025 criterion; the broadest of the four technology stressors</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value red">1.6&ndash;1.8&times;</span>
+      <span class="stat-label">Odds of recovery per <em>SD</em> of resource</span>
+      <span class="stat-sub">Optimism, self-esteem, or work meaning among employees leaving the Distressed profile: Resilient rather than Reserved destination</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value red">1.75&times;</span>
+      <span class="stat-label">Loss outweighs gain</span>
+      <span class="stat-sub">Distress &rarr; self-esteem cross-lag (&minus;.14) versus self-esteem &rarr; distress (&minus;.08); likelihood-ratio <em>p</em> &lt; .001</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value red">17% vs. 8%</span>
+      <span class="stat-label">Likely to quit within 12 months</span>
+      <span class="stat-sub">Distressed versus Resilient members, 2023 &mdash; while realized exits by 2025 did not differ (9% vs. 9%)</span>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="s1">
+  <p class="section-label" id="s1">1 &middot; Run the spiral</p>
+  <p class="section-intro">The paper estimates how a person&rsquo;s own year-to-year shifts in a
+  psychological resource and in distress feed each other, after removing stable differences
+  between people (a random-intercept cross-lagged panel model). The coefficients below are the
+  published ones. Choose a pair and a disturbance size; the chart traces what those coefficients
+  imply for the years that follow a single one-time change, with everything else at its expected
+  level.</p>
+
+  <div class="calc">
+    <div class="controls">
+      <fieldset>
+        <legend>Resource&ndash;strain pair</legend>
+        <div class="seg" role="group" aria-label="Choose the pair">
+          <button type="button" data-pair="se" aria-pressed="true">Self-esteem &harr; distress</button>
+          <button type="button" data-pair="opt" aria-pressed="false">Optimism &harr; negative affect</button>
+        </div>
+        <p class="control-note" id="pair-note">Rosenberg self-esteem and MHI-5 mental-health distress,
+        annual 2017&ndash;2025, <em>n</em> = 7,513 persons. Loss-primacy asymmetry confirmed by
+        likelihood-ratio test (<em>p</em> &lt; .001).</p>
+      </fieldset>
+
+      <div class="slider-row">
+        <label for="shock">Size of the one-time change</label>
+        <input type="range" id="shock" min="0.5" max="2" step="0.25" value="1">
+        <output id="shock-out">1.00 SD</output>
+      </div>
+      <p class="control-note">In within-person standard deviations. The paper plots 1 <em>SD</em>;
+      the model is linear, so other sizes rescale the curves without changing their shape or the
+      ratio between them.</p>
+
+      <fieldset style="margin-top:18px">
+        <legend>Published coefficients in use</legend>
+        <table style="font-size:14px; border-collapse:collapse" aria-label="Coefficients">
+          <tbody id="coef-table"></tbody>
+        </table>
+      </fieldset>
+    </div>
+
+    <div class="results">
+      <figure class="chart">
+        <svg id="spiral-chart" viewBox="0 0 560 330" role="img" aria-labelledby="chart-title chart-desc">
+          <title id="chart-title">Model-implied displacement after a one-time change</title>
+          <desc id="chart-desc">Two curves over six years. The red curve is the resource after a one-time rise in distress; the blue curve is distress after an equal one-time gain in the resource. The shaded area between them is the loss-primacy asymmetry.</desc>
+        </svg>
+        <figcaption id="chart-cap"></figcaption>
+      </figure>
+
+      <div class="stat-pair">
+        <div class="stat">
+          <span class="stat-value red" id="out-loss-peak">&nbsp;</span>
+          <span class="stat-label" id="out-loss-label">Resource lost, year 1</span>
+          <span class="stat-sub" id="out-loss-cum">&nbsp;</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value blue" id="out-gain-peak">&nbsp;</span>
+          <span class="stat-label" id="out-gain-label">Distress relieved, year 1</span>
+          <span class="stat-sub" id="out-gain-cum">&nbsp;</span>
+        </div>
+      </div>
+
+      <div class="kicker-bar" id="kicker">
+        <p class="kicker-main" id="kicker-main">&nbsp;</p>
+        <p class="kicker-sub" id="kicker-sub">&nbsp;</p>
+      </div>
+      <p class="dollar-note">Within-person associations from an observational panel, not
+      interventional effects. The measurement-error-corrected model in the paper (free observation
+      noise) estimates larger cross-lags for the self-esteem pair (&minus;.22 and &minus;.12) and
+      preserves the asymmetry direction; this explorer uses the primary random-intercept
+      estimates.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="s2">
+  <p class="section-label" id="s2">2 &middot; Which way out of distress?</p>
+  <p class="section-intro">About one employee in six sat in the Distressed configuration at any
+  wave (high neuroticism with preserved agreeableness). Over a decade, most moved. The question
+  the paper asks is not whether they left but <em>where they went</em>: toward the Resilient
+  profile (recovery) or toward the Reserved profile (withdrawal with lower engagement). Each
+  resource below was tested in its own model among employees leaving Distressed.</p>
+
+  <div class="odds">
+    <div class="controls">
+      <label for="res" style="display:block;font-weight:700;margin-bottom:6px">Resource at the point of exit</label>
+      <select id="res"></select>
+      <div class="slider-row">
+        <label for="z">Standing relative to other Distressed leavers</label>
+        <input type="range" id="z" min="-2" max="2" step="0.5" value="1">
+        <output id="z-out">+1.0 SD</output>
+      </div>
+      <p class="control-note" id="res-note"></p>
+    </div>
+    <div class="results">
+      <p class="odds-sentence" id="odds-sentence"></p>
+      <div class="stat">
+        <span class="stat-value red" id="odds-mult">&nbsp;</span>
+        <span class="stat-label">odds multiplier, recovery vs. disengagement</span>
+        <span class="stat-sub" id="odds-sub">&nbsp;</span>
+      </div>
+      <p class="dollar-note">Odds ratios per <em>SD</em> from single-resource logistic models of
+      pooled unique Distressed leavers (modal assignment at entropy = .537). Resources were not
+      modeled jointly, so the slider works one resource at a time; multiplying across resources
+      is not supported by the paper. See <a href="evidence.html#e3">the evidence</a> for the
+      classification-error sensitivities behind each verdict.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="s3">
+  <p class="section-label" id="s3">3 &middot; What the study found, in order</p>
+  <ul class="todo">
+    <li><strong>The four profiles travel.</strong> Distressed, Antagonistic, Reserved, and
+    Resilient, first recovered in U.S. midlife adults on the MIDI inventory, re-emerged on the
+    IPIP-50 in a Dutch working-age panel (Tucker congruence .96 after Procrustes rotation). The
+    Antagonistic and Resilient anchors replicated inside independently recruited entry cohorts;
+    Distressed is a partial shape match recoverable only in the pooled model.</li>
+    <li><strong>Perceived replaceability and exhaustion carried forward five years.</strong>
+    Displacement risk in 2020 predicted lower job satisfaction (&beta; = &minus;.11) and life
+    satisfaction (&minus;.11) in 2025. Exhaustion predicted all three criteria (&minus;.22,
+    &minus;.31, and &minus;.20 on positive affect). Algorithmic management reached only life
+    satisfaction; technology self-efficacy ran the other way (&beta;s &asymp; .10). Ten of 16
+    paths were significant and all survived false-discovery control.</li>
+    <li><strong>Distressed membership did not amplify the stressors.</strong> The a priori
+    moderation hypothesis was not supported. Exploratory slopes were steepest among Antagonistic
+    members, which is a description, not a rescue.</li>
+    <li><strong>Resources steered the exit.</strong> Optimism (OR 1.78), self-esteem (1.62), and
+    work meaning (1.77) per <em>SD</em> predicted recovery over disengagement and held up under
+    soft-weighted, pseudo-class, and Firth sensitivities, and under direct classification-error
+    correction in a latent annual Markov model. Workplace support was frame-sensitive; PsyCap was
+    underpowered (<em>n</em> = 44).</li>
+    <li><strong>Losses outran gains within persons.</strong> Lagged distress depleted self-esteem
+    (&minus;.14) more than lagged self-esteem relieved distress (&minus;.08), and the asymmetry
+    survived a likelihood-ratio test. The optimism&ndash;negative affect pair showed reciprocal
+    paths but no reliable asymmetry.</li>
+    <li><strong>Appraisal, not occupation title.</strong> Perceived displacement related to lower
+    work meaning, support, and job satisfaction and higher distress. Occupation-level AI exposure
+    (Felten AIOE) was null on all but one small path, and Frey&ndash;Osborne automatability failed
+    a pre-trend falsification check, pointing to occupational selection rather than
+    disruption.</li>
+    <li><strong>Costs surfaced before anyone left.</strong> Distressed members reported about 65
+    more lost work hours a year than Resilient members and twice the quit-intent rate, yet
+    realized exits by 2025 did not differ and Distressed members reported <em>more</em>
+    self-rated effort. Euro translations were partly compositional under a double/debiased
+    machine-learning check.</li>
+  </ul>
+</section>
+
+<details class="model-notes">
+  <summary>Design, data, and what this site does not claim</summary>
+  <ul>
+    <li>LISS panel (Centerdata, Tilburg University), probability-based Dutch household panel.
+    Secondary analysis of de-identified archive data under a signed data-user agreement. No
+    respondent-level data are hosted here; every number on this site is a published aggregate.</li>
+    <li>Profiles: measurement-invariant stacked Gaussian mixture on the IPIP-50 Big Five,
+    <em>k</em> = 4 retained on multi-criterion grounds (entropy = .537; Mplus 8.8 cross-check,
+    class means <em>r</em> &ge; .999). Modal shares: Distressed 16.6%, Antagonistic 28.8%,
+    Reserved 36.3%, Resilient 18.3%.</li>
+    <li>2020 technology modules (robotization, technostress) are single-shot, fielded during the
+    COVID-19 onset, and predate large-language-model diffusion. They measure appraised
+    replaceability, machine pacing, digital monitoring, and exhaustion &mdash; not generative-AI
+    use.</li>
+    <li>Stressor &rarr; 2025 models are lagged associations with demographic covariates and HC3
+    standard errors; they establish temporal precedence of measurement, not causation, and do
+    not adjust for baseline criterion levels.</li>
+    <li>Attrition: 30.6% of pre-2020 entrants observed again in 2023&ndash;2025; baseline
+    selectivity modest (|<em>d</em>| &le; 0.18), favoring healthier remainers.</li>
+    <li>No intervention is evaluated. The study identifies markers that covary with well-being and
+    with recovery-oriented exits; whether changing them changes outcomes is not tested.</li>
+  </ul>
+</details>
+
+<footer>
+  <p>Monnot, M. J. (2026). <em>Upward and downward spirals in employee well-being: Personality
+  profiles and psychological resources under AI-related workplace change</em>. SSRN preprint.
+  <a href="https://doi.org/10.2139/ssrn.7617538">https://doi.org/10.2139/ssrn.7617538</a></p>
+  <p>Companion to the MIDUS study: Monnot, M. J. (2026). <em>Afloat or adrift</em>. PsyArXiv.
+  <a href="https://doi.org/10.31234/osf.io/9r6hd_v1">https://doi.org/10.31234/osf.io/9r6hd_v1</a></p>
+  <p><a href="https://mjmonnot.github.io/">mjmonnot.github.io</a> &middot;
+  Contact: matt@vocentive.com</p>
+</footer>
+
+</main>
+<script src="app.js"></script>
+</body>
+</html>
