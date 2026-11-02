@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this companion site or cite the study, please cite the preprint."
+title: "Upward and Downward Spirals in Employee Well-Being: Personality Profiles and Psychological Resources Under AI-Related Workplace Change"
+authors:
+  - family-names: Monnot
+    given-names: Matthew J.
+    orcid: "https://orcid.org/0000-0002-9489-1777"
+    affiliation: Vocentive
+identifiers:
+  - type: doi
+    value: 10.2139/ssrn.7617538
+    description: SSRN preprint
+url: "https://doi.org/10.2139/ssrn.7617538"
+repository-code: "https://github.com/mjmonnot/wellbeing-spirals"
